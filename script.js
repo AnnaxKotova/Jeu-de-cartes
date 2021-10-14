@@ -57,5 +57,28 @@ named_deck_clubs = named_cards(deck_clubs, "trèfle");
 //le plateau total
 const all_desk = Object.assign(named_deck_hearts, named_deck_spades, named_deck_diamonds, named_deck_clubs);
 
-console.log(all_desk);
 
+
+//affichage de toutes les cartes
+console.log(all_desk);
+for (let element in all_desk) {
+   console.log(element);
+ }
+
+ console.log(all_desk["2 de carreaux"]["suit"]);
+
+ function compare (card_1, card_2){
+    if (card_1 > card_2){
+      console.log(card_1 +" est gagné ");
+      
+    }
+    else if (card_2 > card_1){
+      console.log(card_2 +" est gagné ");
+      
+   }
+   else {
+      console.log("Les valeurs des cartes sont égales");
+   }
+ }
+
+ console.log(compare (all_desk["2 de carreaux"]["number"], all_desk["3 de piques"]["number"]));
