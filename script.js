@@ -79,43 +79,105 @@ for (let element in all_deck) {
 deck_shuffled = deck_to_play.sort(() => Math.random() - 0.5);
 
 
-console.log(deck_shuffled.length);
+
 
 let size = 52/4; //numéro des cards pour 1 player
 
 
-let preplay = []; //le tableu avec les cards 
+let preplay = []; //le tableu avec les cards с картами предназначенными для каждого игрока
 
 
 for (let i = 0; i <Math.ceil(deck_shuffled.length/size); i++){
    preplay[i] = deck_shuffled.slice((i*size), (i*size) + size);
 }
 
-console.log(preplay);
+
 
 let player1 = preplay[0];
 let player2 = preplay[1];
 let player3 = preplay[2];
 let player4 = preplay[3];
 
-console.log(player1);
-console.log(player2);
-console.log(player3);
-console.log(player4);
+
+
+let card_player1 = player1[Math.floor(Math.random()*player1.length)];
+console.log(card_player1);
+let card_player2 = player2[Math.floor(Math.random()*player2.length)];
+console.log(card_player2);
+let card_player3 = player3[Math.floor(Math.random()*player3.length)];
+console.log(card_player3);
+let card_player4 = player4[Math.floor(Math.random()*player4.length)];
+console.log(card_player4);
+
 
 
  function compare (card_1, card_2){
     if (card_1["number"] > card_2["number"]){
-      console.log(card_1["name"] +" est gagné ");
-      
+      console.log(card_1["name"] +" est gagné "+ ", joueur 1");
+      return(card_1);
     }
     else if (card_2["number"] > card_1["number"]){
-      console.log(card_2["name"] +" est gagné ");
-      
+      console.log(card_2["name"] +" est gagné " + ", joueur 2");
+      return(card_2);
    }
    else {
       console.log("Les valeurs des cartes sont égales, ex-aequo");
+      return(Math.random(card_1, card_2));
    }
  }
 
-compare(all_deck["2 de carreaux"], all_deck["3 de piques"]);
+// compare(card_player1, card_player2);
+
+// compare(card_player3, card_player4);
+
+let card_winner = compare(compare(card_player1, card_player2), compare(card_player3, card_player4));
+
+console.log(card_winner);
+
+let played_cards = [card_player1, card_player2, card_player3, card_player4];
+
+console.log(played_cards);
+
+if (player1.includes(card_winner)){
+   player1.push(card_player1, card_player2, card_player3, card_player4);  
+}
+else if (player2.includes(card_winner)){
+   player2.push(card_player1, card_player2, card_player3, card_player4);  
+}
+else if (player3.includes(card_winner)){
+   player3.push(card_player1, card_player2, card_player3, card_player4);  
+}
+else if (player4.includes(card_winner)){
+   player4.push(card_player1, card_player2, card_player3, card_player4);  
+};
+
+
+console.log(player1);
+
+
+
+// function compare_all (card_1, card_2, card_3, card_4){
+//    if (card_1["number"] > card_2["number"]){
+//      console.log(card_1["name"] +" est gagné "+ ", joueur 1");
+     
+//    }
+//    else if (card_2["number"] > card_1["number"]){
+//      console.log(card_2["name"] +" est gagné " + ", joueur 2");
+     
+//   }
+//   else {
+//      console.log("Les valeurs des cartes sont égales, ex-aequo");
+//   }
+
+//   if (card_3["number"] > card_4["number"]){
+//    console.log(card_1["name"] +" est gagné "+ ", joueur 1");
+   
+//  }
+//  else if (card_4["number"] > card_3["number"]){
+//    console.log(card_2["name"] +" est gagné " + ", joueur 2");
+   
+// }
+// else {
+//    console.log("Les valeurs des cartes sont égales, ex-aequo");
+// }
+// }
