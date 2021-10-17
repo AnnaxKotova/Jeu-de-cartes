@@ -1,0 +1,47 @@
+.player{
+    width: 150px;
+    min-height: 150px;
+    text-align: center;
+    padding: 1%;
+}
+
+.player_1{
+    background-color: palevioletred;
+}
+
+.player_2{
+    background-color: rgb(18, 35, 134);
+}
+
+.player_3{
+    background-color: green;
+}
+
+.player_4{
+    background-color: orange;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.round{
+    border: none;
+    outline: none;
+    background-color: rgb(146, 1, 1);
+    color: yellow;
+    align-items: center;
+    padding: 1%;
+}
+
+.board{
+    padding-top: 3%;
+    width: 100%;
+    text-align: center;
+}
