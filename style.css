@@ -10,11 +10,11 @@
 }
 
 .player_2{
-    background-color: rgb(18, 35, 134);
+    background-color: rgb(81, 94, 165);
 }
 
 .player_3{
-    background-color: green;
+    background-color: rgb(73, 170, 73);
 }
 
 .player_4{
@@ -40,8 +40,25 @@
     padding: 1%;
 }
 
+.round:hover{
+    cursor: pointer;
+}
+
 .board{
     padding-top: 3%;
     width: 100%;
     text-align: center;
+}
+
+.winner{
+    border: 2px solid green;
+}
+
+.none{
+    display: none;
+}
+
+.info{
+    margin: 5% 5%;
+    width: max-content;
 }

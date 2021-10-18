@@ -118,9 +118,12 @@ function comparison (card_1, card_2){
 
 let round = document.getElementById("round");
 let board = document.getElementById("board");
+let board1 = document.getElementById("board1");
+let board2 = document.getElementById("board2");
+let board3 = document.getElementById("board3");
+let board4 = document.getElementById("board4");
 
-this.addEventListener("click", function(){
-   console.log('AAAA');
+round.addEventListener("click", function(){
    if (player1.length !== 0){
       card_player1 = choice_card(player1);
    }
@@ -135,6 +138,7 @@ this.addEventListener("click", function(){
    }
    
    console.log(card_player1, card_player2, card_player3, card_player4);
+   
 
 
 
@@ -197,109 +201,169 @@ this.addEventListener("click", function(){
    }
    }
 
+
+   document.getElementById("cards_player1").innerHTML = "Joueur 1" + " : " + card_player1["name"];
+   document.getElementById("cards_player2").innerHTML = "Joueur 2" + " : " + card_player2["name"];
+   document.getElementById("cards_player3").innerHTML = "Joueur 3" + " : " + card_player3["name"];
+   document.getElementById("cards_player4").innerHTML = "Joueur 4" + " : " + card_player4["name"];
+
+   //retour de cartes à un joueur gagnant
+
    if (player1.includes(card_winner)){
+      document.getElementById("cards_player1").classList.add("winner");
+      document.getElementById("cards_player2").classList.remove("winner");
+      document.getElementById("cards_player3").classList.remove("winner");
+      document.getElementById("cards_player4").classList.remove("winner");
       if ((player2.length === 0) && (player3.length === 0) && ((player4.length !== 0))){
          player1.push(card_player4);
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else if ((player2.length === 0) && (player3.length !== 0) && (player4.length === 0)){ 
          player1.push(card_player3);
+         player3.splice(player3.indexOf(card_player3), 1);  
       }
       else if ((player2.length !== 0) && (player3.length === 0) && (player4.length === 0)){ 
          player1.push(card_player2);
+         player2.splice(player2.indexOf(card_player2), 1);
       }
       else if ((player2.length !== 0) && (player3.length !== 0) && (player4.length === 0)){ 
          player1.push(card_player2, card_player3);
+         player2.splice(player2.indexOf(card_player2), 1);
+         player3.splice(player3.indexOf(card_player3), 1);  
       }
       else if ((player2.length !== 0) && (player3.length === 0) && (player4.length !== 0)){ 
          player1.push(card_player2, card_player4);
+         player2.splice(player2.indexOf(card_player2), 1);
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else if ((player2.length === 0) && (player3.length !== 0) && (player4.length !== 0)){ 
          player1.push(card_player3, card_player4);
+         player3.splice(player3.indexOf(card_player3), 1);  
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else{
          player1.push(card_player2, card_player3, card_player4);    
+         player2.splice(player2.indexOf(card_player2), 1);
+         player3.splice(player3.indexOf(card_player3), 1);  
+         player4.splice(player4.indexOf(card_player4), 1);
       }  
-      player2.splice(player2.indexOf(card_player2), 1);
-      player3.splice(player3.indexOf(card_player3), 1);  
-      player4.splice(player4.indexOf(card_player4), 1);
    }
    else if (player2.includes(card_winner)){
+      document.getElementById("cards_player2").classList.add("winner");
+      document.getElementById("cards_player1").classList.remove("winner");      
+      document.getElementById("cards_player3").classList.remove("winner");
+      document.getElementById("cards_player4").classList.remove("winner");
       if ((player1.length === 0) && (player3.length === 0) && ((player4.length !== 0))){
          player2.push(card_player4);
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else if ((player1.length === 0) && (player3.length !== 0) && (player4.length === 0)){ 
          player2.push(card_player3);
+         player3.splice(player3.indexOf(card_player3), 1);  
       }
       else if ((player1.length !== 0) && (player3.length === 0) && (player4.length === 0)){ 
          player2.push(card_player1);
+         player1.splice(player1.indexOf(card_player1), 1);  
       }
       else if ((player1.length !== 0) && (player3.length !== 0) && (player4.length === 0)){ 
          player2.push(card_player1, card_player3);
+         player1.splice(player1.indexOf(card_player1), 1);  
+         player3.splice(player3.indexOf(card_player3), 1);  
       }
       else if ((player1.length !== 0) && (player3.length === 0) && (player4.length !== 0)){ 
          player2.push(card_player1, card_player4);
+         player1.splice(player1.indexOf(card_player1), 1);  
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else if ((player1.length === 0) && (player3.length !== 0) && (player4.length !== 0)){ 
          player2.push(card_player3, card_player4);
+         player3.splice(player3.indexOf(card_player3), 1);  
+         player4.splice(player4.indexOf(card_player4), 1);
       }
       else{
          player2.push(card_player1, card_player3, card_player4); 
+         player1.splice(player1.indexOf(card_player1), 1);
+         player3.splice(player3.indexOf(card_player3), 1);  
+         player4.splice(player4.indexOf(card_player4), 1);
       }
-      player1.splice(player1.indexOf(card_player1), 1);
-      player3.splice(player3.indexOf(card_player3), 1);  
-      player4.splice(player4.indexOf(card_player4), 1);
    }
    else if (player3.includes(card_winner)){
+      document.getElementById("cards_player3").classList.add("winner");
+      document.getElementById("cards_player1").classList.remove("winner");      
+      document.getElementById("cards_player2").classList.remove("winner");
+      document.getElementById("cards_player4").classList.remove("winner");
       if ((player1.length === 0) && (player2.length === 0) && ((player4.length !== 0))){
             player3.push(card_player4);
+            player4.splice(player4.indexOf(card_player4), 1);
          }
          else if ((player1.length === 0) && (player2.length !== 0) && (player4.length === 0)){ 
             player3.push(card_player2);
+            player2.splice(player2.indexOf(card_player2), 1);
          }
          else if ((player1.length !== 0) && (player2.length === 0) && (player4.length === 0)){ 
             player3.push(card_player1);
+            player1.splice(player1.indexOf(card_player1), 1);
          }
          else if ((player1.length !== 0) && (player2.length !== 0) && (player4.length === 0)){ 
             player3.push(card_player1, card_player2);
+            player1.splice(player1.indexOf(card_player1), 1);
+            player2.splice(player2.indexOf(card_player2), 1);
          }
          else if ((player1.length !== 0) && (player2.length === 0) && (player4.length !== 0)){ 
             player3.push(card_player1, card_player4);
+            player1.splice(player1.indexOf(card_player1), 1);
+            player4.splice(player4.indexOf(card_player4), 1);
          }
          else if ((player1.length === 0) && (player2.length !== 0) && (player4.length !== 0)){ 
             player3.push(card_player2, card_player4);
+            player2.splice(player2.indexOf(card_player2), 1);
+            player4.splice(player4.indexOf(card_player4), 1);
          }
          else{
             player3.push(card_player1, card_player2, card_player4);
-      }
-      player1.splice(player1.indexOf(card_player1), 1);
-      player2.splice(player2.indexOf(card_player2), 1);  
-      player4.splice(player4.indexOf(card_player4), 1);  
+            player1.splice(player1.indexOf(card_player1), 1);
+            player2.splice(player2.indexOf(card_player2), 1);  
+            player4.splice(player4.indexOf(card_player4), 1);
+      }  
    }
    else if (player4.includes(card_winner)){
+      document.getElementById("cards_player4").classList.add("winner");
+      document.getElementById("cards_player1").classList.remove("winner");      
+      document.getElementById("cards_player2").classList.remove("winner");
+      document.getElementById("cards_player3").classList.remove("winner");
       if ((player1.length === 0) && (player2.length === 0) && ((player3.length !== 0))){
          player4.push(card_player3);
+         player3.splice(player3.indexOf(card_player3), 1);  
       }
       else if ((player1.length === 0) && (player2.length !== 0) && (player3.length === 0)){ 
          player4.push(card_player2);
+         player2.splice(player2.indexOf(card_player2), 1);  
       }
       else if ((player1.length !== 0) && (player2.length === 0) && (player3.length === 0)){ 
          player4.push(card_player1);
+         player1.splice(player1.indexOf(card_player1), 1);
       }
       else if ((player1.length !== 0) && (player2.length !== 0) && (player3.length === 0)){ 
          player4.push(card_player1, card_player2);
+         player1.splice(player1.indexOf(card_player1), 1);
+         player2.splice(player2.indexOf(card_player2), 1);
       }
       else if ((player1.length !== 0) && (player2.length === 0) && (player3.length !== 0)){ 
          player4.push(card_player1, card_player3);
+         player1.splice(player1.indexOf(card_player1), 1);
+         player3.splice(player3.indexOf(card_player3), 1); 
       }
       else if ((player1.length === 0) && (player2.length !== 0) && (player3.length !== 0)){ 
          player4.push(card_player2, card_player3);
+         player2.splice(player2.indexOf(card_player2), 1);
+         player3.splice(player3.indexOf(card_player3), 1); 
       }
       else{
          player4.push(card_player1, card_player2, card_player3);
-      }
-      player1.splice(player1.indexOf(card_player1), 1);
-      player2.splice(player2.indexOf(card_player2), 1); 
-      player3.splice(player3.indexOf(card_player3), 1);         
+         player1.splice(player1.indexOf(card_player1), 1);
+         player2.splice(player2.indexOf(card_player2), 1); 
+         player3.splice(player3.indexOf(card_player3), 1);   
+      }     
    };
 
    console.log(player1);
@@ -308,32 +372,39 @@ this.addEventListener("click", function(){
    console.log(player4);  
 
    console.log(player1.length + player2.length + player3.length + player4.length);
-   
-if (player1.length === 0){
-   board.innerHTML += "Joueur 1 est perdu !";
-}
-if (player2.length === 0){
-   board.innerHTML += "Joueur 2 est perdu !";
-}
-if (player3.length === 0){
-   board.innerHTML += "Joueur 3 est perdu !";
-}
-if (player4.length === 0){
-   board.innerHTML += "Joueur 4 est perdu !";
-}
+   if (player1.length === 0){
+      board1.innerHTML = "Joueur 1 est perdu !";
+      document.getElementById("cards_player1").classList.add("none");
 
-if (player1.length === 52){
-   board.innerHTML += "Game over. Joueur 1 est gagné !";
-}
-else if (player2.length === 52){
-   board.innerHTML += "Game over. Joueur 2 est gagné !";
-}
-else if (player3.length === 52){
-   board.innerHTML += "Game over. Joueur 3 est gagné !";
-}
-else if (player2.length === 52){
-   board.innerHTML += "Game over. Joueur 4 est gagné !";
-}
+   }
+   if (player2.length === 0){
+      board2.innerHTML = "Joueur 2 est perdu !";
+      document.getElementById("cards_player2").classList.add("none");
+   }
+   if (player3.length === 0){
+      board3.innerHTML = "Joueur 3 est perdu !";
+      document.getElementById("cards_player3").classList.add("none");
+   }
+   if (player4.length === 0){
+      board4.innerHTML = "Joueur 4 est perdu !";
+      document.getElementById("cards_player4").classList.add("none");
+   }
+   
+   if (player1.length === 52){
+      board.innerHTML = "Game over. Joueur 1 est gagné !";
+   }
+   else if (player2.length === 52){
+      board.innerHTML = "Game over. Joueur 2 est gagné !";
+   }
+   else if (player3.length === 52){
+      board.innerHTML = "Game over. Joueur 3 est gagné !";
+   }
+   else if (player2.length === 52){
+      board.innerHTML = "Game over. Joueur 4 est gagné !";
+   }
+
 });
+
+
 
 
