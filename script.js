@@ -61,16 +61,11 @@ let all_deck = Object.assign(named_deck_hearts, named_deck_spades, named_deck_di
 //transformation au tableau, le nom est le nombre
 const deck_to_play = [].concat(...Object.values(all_deck));
 
-// affichage de toutes les cartes
-// for (let i = 0; i < 51; i++){
-//    console.log(deck_to_play[i]);
-// }
+//affichage de toutes les cartes dans le console
 
-//ou également
-
-// for (let element in all_deck) {
-//    console.log(element);
-//  }
+for (let element in all_deck) {
+   console.log(element);
+ }
 
 //mélange du plateau
 
@@ -101,15 +96,12 @@ function choice_card (player){
 
 function comparison (card_1, card_2){
    if (card_1["number"] > card_2["number"]){
-   //   console.log(card_1["name"] +" est gagné "+ ", joueur 1");
      return(card_1);
    }
    else if (card_2["number"] > card_1["number"]){
-   //   console.log(card_2["name"] +" est gagné " + ", joueur 2");
      return(card_2);
   }
   else {
-   //   console.log("Les valeurs des cartes sont égales, ex-aequo");
      //pour choix de la carte randomisé
      let card_draw = [card_1, card_2][Math.floor(Math.random()*2)]
      return(card_draw);
@@ -123,6 +115,8 @@ let board2 = document.getElementById("board2");
 let board3 = document.getElementById("board3");
 let board4 = document.getElementById("board4");
 
+
+// "pli"
 round.addEventListener("click", function(){
    if (player1.length !== 0){
       card_player1 = choice_card(player1);
@@ -139,9 +133,6 @@ round.addEventListener("click", function(){
    
    console.log(card_player1, card_player2, card_player3, card_player4);
    
-
-
-
    //tout les joueurs ont des cartes
    if (((player1.length !== 0) && (player2.length !== 0)) && ((player3.length !== 0) && (player4.length !== 0))){
    card_winner = comparison(comparison(card_player1, card_player2), comparison(card_player3, card_player4));
@@ -371,7 +362,6 @@ round.addEventListener("click", function(){
    console.log(player3);
    console.log(player4);  
 
-   console.log(player1.length + player2.length + player3.length + player4.length);
    if (player1.length === 0){
       board1.innerHTML = "Joueur 1 est perdu !";
       document.getElementById("cards_player1").classList.add("none");
@@ -390,17 +380,21 @@ round.addEventListener("click", function(){
       document.getElementById("cards_player4").classList.add("none");
    }
    
-   if (player1.length === 52){
+   if ((player2.length === 0) && (player3.length === 0) && (player4.length === 0)){
       board.innerHTML = "Game over. Joueur 1 est gagné !";
+      document.getElementById("info").classList.add("none");
    }
-   else if (player2.length === 52){
+   else if ((player1.length === 0) && (player3.length === 0) && (player4.length === 0)){
       board.innerHTML = "Game over. Joueur 2 est gagné !";
+      document.getElementById("info").classList.add("none");
    }
-   else if (player3.length === 52){
+   else if ((player1.length === 0) && (player2.length === 0) && (player4.length === 0)){
       board.innerHTML = "Game over. Joueur 3 est gagné !";
+      document.getElementById("info").classList.add("none");
    }
-   else if (player2.length === 52){
+   else if ((player1.length === 0) && (player2.length === 0) && (player3.length === 0)){
       board.innerHTML = "Game over. Joueur 4 est gagné !";
+      document.getElementById("info").classList.add("none");
    }
 
 });
